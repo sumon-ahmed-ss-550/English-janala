@@ -24,7 +24,7 @@ const displayItem = (lessons) => {
     const newElement = document.createElement("div");
     newElement.innerHTML = `
     <button type="submit" class="btn btn-outline btn-primary">
-        lesson-${lesson.level_no}
+        <i class="fa-solid fa-book-open"></i>lesson-${lesson.level_no}
     </button>
     `;
     lessonContainer.appendChild(newElement);
