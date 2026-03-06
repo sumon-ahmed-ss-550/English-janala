@@ -125,14 +125,14 @@ const fadeItemShowDisplay = (detail) => {
           <h2 class="font-medium text-2xl leading-10 mb-5">
             সমার্থক শব্দ গুলো
           </h2>
-          <div>
-            <span class="bg-[#EDF7FF] outline-[#D7E4EF] p-5 rounded-md"
+          <div class="sm:flex gap-4">
+            <span class="bg-[#EDF7FF] mb-4 sm:mb-0 block outline-[#D7E4EF] p-5 rounded-md"
               >${detail.synonyms[0]}</span
             >
-            <span class="bg-[#EDF7FF] outline-[#D7E4EF] p-5 rounded-md"
+            <span class="bg-[#EDF7FF] mb-4 sm:mb-0 block outline-[#D7E4EF] p-5 rounded-md"
               >${detail.synonyms[1]}</span
             >
-            <span class="bg-[#EDF7FF] outline-[#D7E4EF] p-5 rounded-md"
+            <span class="bg-[#EDF7FF] mb-4 sm:mb-0 block outline-[#D7E4EF] p-5 rounded-md"
               >${detail.synonyms[2]}</span
             >
           </div>
