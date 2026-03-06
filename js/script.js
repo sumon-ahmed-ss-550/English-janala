@@ -1,3 +1,4 @@
+// lesson buttons
 const makeRequest = async (url, config) => {
   const res = await fetch(url, config);
   if (!res.ok) {
@@ -31,8 +32,18 @@ const displayItem = (lessons) => {
   }
 };
 
-// {id: 5, level: 1, word: 'Eager', meaning: 'আগ্রহী', pronunciation: 'ইগার'}
+const addSpinner = (status) => {
+  if (status) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("word-container").classList.add("hidden");
+  } else {
+    document.getElementById("word-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
 const loadLevelWord = (id) => {
+  addSpinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   const res = fetch(url);
   res
@@ -91,6 +102,7 @@ const displayData = (data) => {
     `;
     wordContainer.appendChild(newElement);
   }
+  addSpinner(false);
 };
 
 const fadeItemShow = async (id) => {
@@ -98,6 +110,13 @@ const fadeItemShow = async (id) => {
   const res = await fetch(url);
   const details = await res.json();
   fadeItemShowDisplay(details.data);
+};
+
+// create fade buttons
+const createFadeButtons = (arr) => {
+  const singleBtn = arr.map((btn) => `<span class="btn">${btn}</span>`);
+  const btn = singleBtn.join(" ");
+  return btn;
 };
 
 const fadeItemShowDisplay = (detail) => {
@@ -126,15 +145,7 @@ const fadeItemShowDisplay = (detail) => {
             সমার্থক শব্দ গুলো
           </h2>
           <div class="sm:flex gap-4">
-            <span class="bg-[#EDF7FF] mb-4 sm:mb-0 block outline-[#D7E4EF] p-5 rounded-md"
-              >${detail.synonyms[0]}</span
-            >
-            <span class="bg-[#EDF7FF] mb-4 sm:mb-0 block outline-[#D7E4EF] p-5 rounded-md"
-              >${detail.synonyms[1]}</span
-            >
-            <span class="bg-[#EDF7FF] mb-4 sm:mb-0 block outline-[#D7E4EF] p-5 rounded-md"
-              >${detail.synonyms[2]}</span
-            >
+          <div class="flex gap-4 flex-wrap">${createFadeButtons(detail.synonyms)}</div>
           </div>
         </div>
       </div>
@@ -143,3 +154,23 @@ const fadeItemShowDisplay = (detail) => {
   `;
   document.getElementById("my_modal_5").showModal();
 };
+
+// search box
+const searchElement = () => {
+  document.getElementById("inputBtn").addEventListener("click", () => {
+    const inputElement = document.getElementById("inputElement");
+    const inputValue = inputElement.value.trim().toLowerCase();
+
+    fetch("https://openapi.programming-hero.com/api/words/all").then((res) =>
+      res.json().then((res) => {
+        const allWords = res.data;
+        const filterWord = allWords.filter((word) =>
+          word.word.toLowerCase().includes(inputValue),
+        );
+        displayData(filterWord);
+        removeActiveStyle();
+      }),
+    );
+  });
+};
+searchElement();
