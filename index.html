@@ -135,6 +135,43 @@
       ></div>
     </section>
 
+    <!-- card -->
+    <section class="max-w-[1760px] mx-auto">
+      <div
+        id="word-container"
+        class="bg-[#F8F8F8] p-[30px] rounded-3xl my-10 mx-4 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <div class="text-center col-span-3 space-y-3 py-12">
+          <p class="hind-siliguri font-normal text-sm leading-6 text-[#79716B]">
+            আপনি এখনো কোন Lesson Select করেন নি
+          </p>
+          <h2
+            class="hind-siliguri font-medium text-4xl leading-10 text-[#292524]"
+          >
+            একটি Lesson Select করুন।
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- modal -->
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <div id="fade-show"></div>
+
+        <div class="modal-action justify-start pl-6">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn bg-[#422AD5] rounded-md text-white">
+              Complete Learning
+            </button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
     <!-- font awesome js link -->
     <script src="./js/all.min.js"></script>
     <script src="./js/fontawesome.min.js"></script>
