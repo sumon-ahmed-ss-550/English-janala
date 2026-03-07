@@ -64,6 +64,13 @@ const removeActiveStyle = () => {
   });
 };
 
+// loud speak
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 const displayData = (data) => {
   const wordContainer = document.getElementById("word-container");
   wordContainer.innerHTML = "";
@@ -96,7 +103,7 @@ const displayData = (data) => {
           </h2>
           <div class="flex justify-between items-center">
             <button onclick="fadeItemShow(${item.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
-            <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></button>
+            <button onclick="pronounceWord('${item.word}')" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></button>
           </div>
     </div>
     `;
